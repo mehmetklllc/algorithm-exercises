@@ -9,26 +9,26 @@ Projede kullanilan teknonojiler
 
 Projeden kisaca bahsedecek olursam .
 
-Request geldiginde datayi rabbitmq ' ya atiyorum baska bir sinif ile consume edip aktör'e gönderiyorum aktör hali hazirda 3 worker a dagitiyor isi,
-sonrasinda her worker yapmasi gereken siteye girip ekran görüntüsünü alip veritabanina kayit etmekte.
+Request geldiginde datayi rabbitmq ' ya atiyorum baska bir sinif ile consume edip aktÃ¶r'e gÃ¶nderiyorum aktÃ¶r hali hazirda 3 worker a dagitiyor isi,
+sonrasinda her worker yapmasi gereken siteye girip ekran gÃ¶rÃ¼ntÃ¼sÃ¼nÃ¼ alip veritabanina kayit etmekte.
 
-Ekra görüntüsü biraz zorladi beni ilk selenium vs toollar kullandim  , sonrasinda phantomjs gördüm arastiriken bunun ile kolaylikla bu iside hallettim.
-Veritabanina cok onem vermedim dediginiz gibi ama imageleri saklamakta biraz ugrastim enson her ekran görüntsünü base64 stringe cevirirp veritabanina kayit ettim.
+Ekra gÃ¶rÃ¼ntÃ¼sÃ¼ biraz zorladi beni ilk selenium vs toollar kullandim  , sonrasinda phantomjs gÃ¶rdÃ¼m arastiriken bunun ile kolaylikla bu iside hallettim.
+Veritabanina cok onem vermedim dediginiz gibi ama imageleri saklamakta biraz ugrastim enson her ekran gÃ¶rÃ¼ntsÃ¼nÃ¼ base64 stringe cevirirp veritabanina kayit ettim.
 
 -----------------------------------------------------------------------
 Soru ile alakali
 
 
  "Sizden ayni zamanda yapmis oldugunuz servisin sonrasinda enterprise olmasi durumunda
-1.000.000 a kadar çikacak bir URL listesini nasil scale edebileceginize dair kisa bir özet yazmanizi
+1.000.000 a kadar Ã§ikacak bir URL listesini nasil scale edebileceginize dair kisa bir Ã¶zet yazmanizi
 bekliyoruz."
 
-Bu soru için ise projede akka kullandim . Bildiginiz üzere es zamanli n tane objenin birbirinden bagimsiz sekilde çalismasina olanak sagliyor.
-Suan 3 worker çalisiyor projede bunu genisletebiliriz.
+Bu soru iÃ§in ise projede akka kullandim . Bildiginiz Ã¼zere es zamanli n tane objenin birbirinden bagimsiz sekilde Ã§alismasina olanak sagliyor.
+Suan 3 worker Ã§alisiyor projede bunu genisletebiliriz.
 
 
 ------------------------------------------------------
-Proje çalistirilmadan önce yapilmasi gerekenler :
+Proje Ã§alistirilmadan Ã¶nce yapilmasi gerekenler :
 
 1. Postgresql kurulmasi lazim 
 2. Rabbitmq kurulmasi lazim
@@ -38,14 +38,30 @@ Proje çalistirilmadan önce yapilmasi gerekenler :
 
 bunlar kuruldukdan sonra 
 
-proje altindaki application.properties dosyasinin içinde gerekli postgresql ve rabbitmq konfigurasyonlari doldurulmali
+proje altindaki application.properties dosyasinin iÃ§inde gerekli postgresql ve rabbitmq konfigurasyonlari doldurulmali
 
 rabbitmq exchange : screen   topic ismi : screen-data  projeye tanimladi.
+
+TAble script : 
+
+CREATE TABLE public.screenshot_website (
+	id varchar(255) NOT NULL,
+	creation_date timestamp NULL,
+	creation_user varchar(255) NULL,
+	deleted bool NULL,
+	last_update_date timestamp NULL,
+	last_update_user varchar(255) NULL,
+	site_url varchar(255) NOT NULL,
+	site_image varchar(10000) NOT NULL,
+	site_description varchar(255) NULL,
+	CONSTRAINT challenge_pkey PRIMARY KEY (id)
+)
+
 
 --------------------------------------------------------------------------------
 Run :
 
-eclipse için goals kismina yazarsaniz calisir.
+eclipse iÃ§in goals kismina yazarsaniz calisir.
 clean install spring-boot:run
 
 konsoldan ise build alindiginda target altina cikarilan jar dosyasini 

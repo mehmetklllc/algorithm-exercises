@@ -32,7 +32,8 @@ Proje çalistirilmadan önce yapilmasi gerekenler :
 
 1. Postgresql kurulmasi lazim 
 2. Rabbitmq kurulmasi lazim
-3. phantomjs indirilmesi lazim (projenin altinda zipli dosyada var)
+3. phantomjs indirilmesi lazim (ilgili os indirip belirlediğiniz dzine koyun : http://phantomjs.org/download.html ,
+  sonrasında ScreenShoter sınıfında 29. satıra dizini set edin)
 
 
 

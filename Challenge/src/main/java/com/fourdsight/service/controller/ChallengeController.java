@@ -35,7 +35,7 @@ public class ChallengeController {
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, MediaType.APPLICATION_XML })
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, MediaType.APPLICATION_XML })
 	public ResponseEntity<ScrennShotAkkaModel> createScreenShot(@RequestBody ScrennShotAkkaModel model) {
-		logger.info("girdi data");
+		
 
 		ResponseEntity<ScrennShotAkkaModel> response = null;
 
@@ -55,7 +55,7 @@ public class ChallengeController {
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, MediaType.APPLICATION_XML })
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN, MediaType.APPLICATION_XML })
 	public ResponseEntity<String> bySiteScreenShot(@PathVariable("url") String url) {
-		logger.info("girdi data");
+	
 
 		ResponseEntity<String> response = null;
 
@@ -70,38 +70,6 @@ public class ChallengeController {
 		return response;
 	}
 
-	// @RequestMapping(value = "/data1", method = RequestMethod.POST)
-	// @Consumes({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN,
-	// MediaType.APPLICATION_XML })
-	// @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN,
-	// MediaType.APPLICATION_XML })
-	// public ResponseEntity<List<ClientData>> data1(@RequestBody
-	// List<ClientData> clientData) {
-	// WorkerObject workerObject=null;
-	// ResponseEntity<List<ClientData>> response=null;
-	// logger.info("girdi data1");
-	// try {
-	//
-	// // burada ilk once gelen device datasinin name@ine gore
-	// // device tablosundan device bilgilerini cekip iceri gondericek
-	// //aktore gonderiliyor
-	//
-	//
-	// workerObject=new WorkerObject();
-	// workerObject.setWorkerType("list");
-	// workerObject.setDatas(clientData);
-	// clientDataHandlingSupervisor.tell(workerObject, ActorRef.noSender());
-	//
-	//
-	//
-	//
-	// response = new ResponseEntity<List<ClientData>>(clientData,
-	// HttpStatus.OK);
-	// } catch (Exception e) {
-	// logger.error("error", e);
-	//
-	// }
-	// return response;
-	// }
+	
 
 }

@@ -26,7 +26,6 @@ public class Data4ScrennShotHandlingActor extends UntypedActor {
 		ScreenshotWebsite screenshotWebsite = null;
 		String imageBase64 = null;
 		ScreenShoter shoter = null;
-		logger.info("********************aktor girdi");
 		shoter = new ScreenShoter();
 		screenshotWebsite = new ScreenshotWebsite();
 		String url = (String) msg;

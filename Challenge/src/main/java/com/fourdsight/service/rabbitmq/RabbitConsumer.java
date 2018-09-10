@@ -23,7 +23,7 @@ public class RabbitConsumer {
 	@RabbitListener(queues = "screen-data")
 	public void recievedMessage(Message msg) {
 		
-		logger.info("********************consumer calıstı");
+		
 		ScrennShotAkkaModel data = (ScrennShotAkkaModel) JsonUtil.jsonToObject(new String(msg.getBody()),
 				ScrennShotAkkaModel.class);
 

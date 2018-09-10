@@ -1,0 +1,62 @@
+Projede kullanilan teknonojiler
+
+1.Springboot
+2.Akka(actor base yapi kuruldu)
+3.Rabbitmq
+4.postgresql
+5.phantomjs 
+------------------------------------------------------
+
+Projeden kisaca bahsedecek olursam .
+
+Request geldiginde datayi rabbitmq ' ya atiyorum baska bir sinif ile consume edip aktör'e gönderiyorum aktör hali hazirda 3 worker a dagitiyor isi,
+sonrasinda her worker yapmasi gereken siteye girip ekran görüntüsünü alip veritabanina kayit etmekte.
+
+Ekra görüntüsü biraz zorladi beni ilk selenium vs toollar kullandim  , sonrasinda phantomjs gördüm arastiriken bunun ile kolaylikla bu iside hallettim.
+Veritabanina cok onem vermedim dediginiz gibi ama imageleri saklamakta biraz ugrastim enson her ekran görüntsünü base64 stringe cevirirp veritabanina kayit ettim.
+
+-----------------------------------------------------------------------
+Soru ile alakali
+
+
+ "Sizden ayni zamanda yapmis oldugunuz servisin sonrasinda enterprise olmasi durumunda
+1.000.000 a kadar çikacak bir URL listesini nasil scale edebileceginize dair kisa bir özet yazmanizi
+bekliyoruz."
+
+Bu soru için ise projede akka kullandim . Bildiginiz üzere es zamanli n tane objenin birbirinden bagimsiz sekilde çalismasina olanak sagliyor.
+Suan 3 worker çalisiyor projede bunu genisletebiliriz.
+
+
+------------------------------------------------------
+Proje çalistirilmadan önce yapilmasi gerekenler :
+
+1. Postgresql kurulmasi lazim 
+2. Rabbitmq kurulmasi lazim
+3. phantomjs indirilmesi lazim (projenin altinda zipli dosyada var)
+
+
+
+bunlar kuruldukdan sonra 
+
+proje altindaki application.properties dosyasinin içinde gerekli postgresql ve rabbitmq konfigurasyonlari doldurulmali
+
+rabbitmq exchange : screen   topic ismi : screen-data  projeye tanimladi.
+
+--------------------------------------------------------------------------------
+Run :
+
+eclipse için goals kismina yazarsaniz calisir.
+clean install spring-boot:run
+
+konsoldan ise build alindiginda target altina cikarilan jar dosyasini 
+ilgili dizene gidip
+ java -jar projename.jar    
+ derseniz calisir
+
+
+
+
+
+
+
+

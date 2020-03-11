@@ -1,49 +1,32 @@
-Projede kullanilan teknonojiler
+used technology in project
 
 1.Springboot
-2.Akka(actor base yapi kuruldu)
+2.Akka(actor base)
 3.Rabbitmq
 4.postgresql
 5.phantomjs 
 ------------------------------------------------------
 
-Projeden kisaca bahsedecek olursam .
+He will talk about the project briefly.
 
-Request geldiginde datayi rabbitmq ' ya atiyorum baska bir sinif ile consume edip aktör'e gönderiyorum aktör hali hazirda 3 worker a dagitiyor isi,
-sonrasinda her worker yapmasi gereken siteye girip ekran görüntüsünü alip veritabanina kayit etmekte.
-
-Ekra görüntüsü biraz zorladi beni ilk selenium vs toollar kullandim  , sonrasinda phantomjs gördüm arastiriken bunun ile kolaylikla bu iside hallettim.
-Veritabanina cok onem vermedim dediginiz gibi ama imageleri saklamakta biraz ugrastim enson her ekran görüntsünü base64 stringe cevirirp veritabanina kayit ettim.
-
------------------------------------------------------------------------
-Soru ile alakali
-
-
- "Sizden ayni zamanda yapmis oldugunuz servisin sonrasinda enterprise olmasi durumunda
-1.000.000 a kadar çikacak bir URL listesini nasil scale edebileceginize dair kisa bir özet yazmanizi
-bekliyoruz."
-
-Bu soru için ise projede akka kullandim . Bildiginiz üzere es zamanli n tane objenin birbirinden bagimsiz sekilde çalismasina olanak sagliyor.
-Suan 3 worker çalisiyor projede bunu genisletebiliriz.
+The project takes screenshots of the websites entered and saves them. When the request comes,
+I throw the data to rabbitmq and consume it with another class and send it to the actor.
 
 
 ------------------------------------------------------
-Proje çalistirilmadan önce yapilmasi gerekenler :
+Things to do before the project is run:
 
-1. Postgresql kurulmasi lazim 
-2. Rabbitmq kurulmasi lazim
-3. phantomjs indirilmesi lazim (ilgili os indirip belirlediğiniz dzine koyun : http://phantomjs.org/download.html ,
-  sonrasında ScreenShoter sınıfında 29. satıra dizini set edin)
+1. Postgresql needs to be installed
+2. Rabbitmq must be installed
+3. download phantomjs (download the corresponding os and put it in the directory you set: http://phantomjs.org/download.html,
+   then set the index on the 29th line in the ScreenShoter class)
 
 
+Required postgresql and rabbitmq configurations must be filled in the application.properties file under the project
 
-bunlar kuruldukdan sonra 
+rabbitmq exchange: screen topic name: screen-data defined to the project.
 
-proje altindaki application.properties dosyasinin içinde gerekli postgresql ve rabbitmq konfigurasyonlari doldurulmali
-
-rabbitmq exchange : screen   topic ismi : screen-data  projeye tanimladi.
-
-TAble script : 
+Table  create script : 
 
 CREATE TABLE public.screenshot_website (
 	id varchar(255) NOT NULL,
@@ -62,14 +45,13 @@ CREATE TABLE public.screenshot_website (
 --------------------------------------------------------------------------------
 Run :
 
-eclipse için goals kismina yazarsaniz calisir.
-clean install spring-boot:run
+If you write down goals for eclipse it will work.
+clean install spring-boot: run
 
-konsoldan ise build alindiginda target altina cikarilan jar dosyasini 
-ilgili dizene gidip
- java -jar projename.jar    
- derseniz calisir
-
+and the jar file that is placed under the target when the build is taken from the console
+go to the relevant string
+ ava -jar projename.jar
+if you say it works
 
 -------------------------------------------------------
 
@@ -83,7 +65,6 @@ body:
 	"siteUrlList":["http://turkishh.com","http://www.4dsight.com"]
 	
 }
-
 
 get site screenShot
 GET

@@ -1,11 +1,11 @@
-used technology in project
+##used technology in project
 
 1.Springboot
 2.Akka(actor base)
 3.Rabbitmq
 4.postgresql
 5.phantomjs 
-------------------------------------------------------
+##------------------------------------------------------
 
 He will talk about the project briefly.
 
@@ -13,8 +13,8 @@ The project takes screenshots of the websites entered and saves them. When the r
 I throw the data to rabbitmq and consume it with another class and send it to the actor.
 
 
-------------------------------------------------------
-Things to do before the project is run:
+##------------------------------------------------------
+##Things to do before the project is run:
 
 1. Postgresql needs to be installed
 2. Rabbitmq must be installed
